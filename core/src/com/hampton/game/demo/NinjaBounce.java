@@ -22,6 +22,7 @@ public class NinjaBounce extends GameScreen {
     private float xMove;
     private float yMove;
     private final float MAX_MOVE = 10;
+    private float moveSlider;
 
 
     @Override
