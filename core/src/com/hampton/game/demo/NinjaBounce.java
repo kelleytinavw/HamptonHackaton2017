@@ -74,7 +74,7 @@ public class NinjaBounce extends GameScreen {
                             xMove = -xMove;
                         }
                         if (ball.getY() + yMove < 0) {
-                            yMove = -yMove;
+                            ball.clearActions();
                         }
                         if (ball.getY() + ball.getHeight() + yMove > stage.getViewport().getScreenHeight()) {
                             yMove = -yMove;
