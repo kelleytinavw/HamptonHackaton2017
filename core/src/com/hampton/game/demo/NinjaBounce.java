@@ -24,7 +24,7 @@ public class NinjaBounce extends GameScreen {
     private float yMove;
     private final float MAX_MOVE = 10;
     private Actor ball1;
-    private Actor [] bricks = new Actor[20];
+    private Actor [] bricks = new Actor[300];
     private Actor bar;
     private Sound popSound;
     private Sound dub;
@@ -56,8 +56,8 @@ public class NinjaBounce extends GameScreen {
             bricks[i] = ActorUtils.createActorFromImage("brick.png");
             bricks[i].setSize(bricks[i].getWidth(), bricks[i].getHeight());
             bricks[i].setPosition(
-                    (bricks[i].getWidth() + 1) * i,
-                    stage.getViewport().getScreenHeight() - bricks[i].getHeight());
+                    (bricks[i].getWidth() + 1) * (i % 30),
+                    stage.getViewport().getScreenHeight() - bricks[i].getHeight()* (i / 30));
             stage.addActor(bricks[i]);
         }
 
@@ -65,7 +65,7 @@ public class NinjaBounce extends GameScreen {
         bar.setSize(bar.getWidth()/3, bar.getHeight()/3);
         bar.setPosition(
                 stage.getViewport().getScreenWidth()/2 - bar.getWidth()/2,
-                20);
+                60);
         stage.addActor(bar);
 
         popSound = Gdx.audio.newSound(Gdx.files.internal("pop.wav"));
