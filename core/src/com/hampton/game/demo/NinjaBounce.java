@@ -26,6 +26,7 @@ public class NinjaBounce extends GameScreen {
     private Actor [] bricks = new Actor[20];
     private Actor bar;
     private Sound popSound;
+    private Actor cat;
 
     
 
@@ -36,6 +37,10 @@ public class NinjaBounce extends GameScreen {
 
     @Override
     public void createActors() {
+        cat = ActorUtils.createActorFromImage("cat.png");
+        cat.setPosition(stage.getViewport().getScreenHeight() * 2, cat.getWidth() * 2);
+        cat.toBack();
+
         backgroundColor = new Color(1, 1, 1, 1);
         ball = ActorUtils.createActorFromImage("ball.png");
         ball.setSize(ball.getWidth()/3, ball.getHeight()/3);
