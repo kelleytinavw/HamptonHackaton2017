@@ -42,7 +42,6 @@ public class NinjaBounce extends GameScreen {
 
         cat = ActorUtils.createActorFromImage("cat.png");
         cat.setSize(stage.getViewport().getScreenWidth(),stage.getViewport().getScreenHeight());
-        // cat.setPosition( * 2, cat.getWidth() * 2);
         stage.addActor(cat);
         cat.toBack();
 
