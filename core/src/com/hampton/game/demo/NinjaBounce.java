@@ -27,7 +27,6 @@ public class NinjaBounce extends GameScreen {
     private Actor [] bricks = new Actor[20];
     private Actor bar;
     private Sound popSound;
-    private Music dub;
     private Actor cat;
     private Sound dub;
     private Actor cat;
@@ -70,7 +69,7 @@ public class NinjaBounce extends GameScreen {
 
         popSound = Gdx.audio.newSound(Gdx.files.internal("pop.wav"));
 
-        dub = Gdx.audio.newMusic(Gdx.files.internal("dub.mp3"));
+        dub = Gdx.audio.newSound(Gdx.files.internal("dub.mp3"));
             dub.play();
     }
 
