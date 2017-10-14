@@ -61,8 +61,6 @@ public class NinjaBounce extends GameScreen {
 
 
 
-
-
     @Override
     public void setInputForActors() {
         ball.addListener(new ActorGestureListener() {
@@ -106,7 +104,7 @@ public class NinjaBounce extends GameScreen {
             Vector2 touchPoint = new Vector2(
                     Gdx.input.getX(),
                     stage.getViewport().getScreenHeight() - Gdx.input.getY());
-            // free-range moving bar
+            // Moves the bar
             bar.setPosition(touchPoint.x - bar.getWidth()/ 2, bar.getY());
         }
 
