@@ -101,12 +101,10 @@ public class NinjaBounce extends GameScreen {
                     stage.getViewport().getScreenHeight() - Gdx.input.getY());
             // free-range moving bar
             bar.setPosition(touchPoint.x - bar.getWidth()/ 2, bar.getY());
+        }
 
-
-
-
-
-
+        if (ActorUtils.actorsCollided(bar,ball)){
+            ball - yMove
         }
     }
 }
