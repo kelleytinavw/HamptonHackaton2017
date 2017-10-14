@@ -25,7 +25,7 @@ public class NinjaBounce extends GameScreen {
     private Actor ball;
     private Actor [] bricks = new Actor[10];
     private Actor bar;
-    private float moveBar;
+    //private float moveBar;
 
     @Override
     public void initialize() {
@@ -41,7 +41,19 @@ public class NinjaBounce extends GameScreen {
                 stage.getViewport().getScreenWidth()/2 - ball.getWidth()/2,
                 stage.getViewport().getScreenHeight()/2 - ball.getHeight()/2);
         stage.addActor(ball);
+
+
+        bar = ActorUtils.createActorFromImage("bar.png");
+        bar.setSize(bar.getWidth()/3, bar.getHeight()/3);
+        bar.setPosition(
+                stage.getViewport().getScreenWidth()/2 - bar.getWidth()/2,
+                20);
+        stage.addActor(bar);
     }
+
+
+
+
 
     @Override
     public void setInputForActors() {
