@@ -23,7 +23,7 @@ public class NinjaBounce extends GameScreen {
     private float xMove;
     private float yMove;
     private final float MAX_MOVE = 10;
-    private Actor ball;
+    private Actor ball1;
     private Actor [] bricks = new Actor[20];
     private Actor bar;
     private Sound popSound;
@@ -45,12 +45,12 @@ public class NinjaBounce extends GameScreen {
         stage.addActor(cat3);
         cat3.toBack();
 
-        ball = ActorUtils.createActorFromImage("ball.png");
-        ball.setSize(ball.getWidth()/3, ball.getHeight()/3);
-        ball.setPosition(
-                stage.getViewport().getScreenWidth()/2 - ball.getWidth()/2,
-                stage.getViewport().getScreenHeight()/2 - ball.getHeight()/2);
-        stage.addActor(ball);
+        ball1 = ActorUtils.createActorFromImage("ball1.jpg");
+        ball1.setSize(ball1.getWidth()/3, ball1.getHeight()/3);
+        ball1.setPosition(
+                stage.getViewport().getScreenWidth()/2 - ball1.getWidth()/2,
+                stage.getViewport().getScreenHeight()/2 - ball1.getHeight()/2);
+        stage.addActor(ball1);
 
         for(int i = 0; i < bricks.length; i++) {
             bricks[i] = ActorUtils.createActorFromImage("brick.png");
@@ -78,29 +78,29 @@ public class NinjaBounce extends GameScreen {
 
     @Override
     public void setInputForActors() {
-        ball.addListener(new ActorGestureListener() {
+        ball1.addListener(new ActorGestureListener() {
             @Override
             public void touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 // Stop any other actions
-                ball.clearActions();
+                ball1.clearActions();
                 xMove = MathUtils.random(MAX_MOVE) - MAX_MOVE/2;
                 yMove = MathUtils.random(MAX_MOVE) - MAX_MOVE/2;
-                ball.addAction(new Action() {
+                ball1.addAction(new Action() {
                     @Override
                     public boolean act(float delta) {
-                        if (ball.getX() + xMove < 0) {
+                        if (ball1.getX() + xMove < 0) {
                             xMove = -xMove;
                         }
-                        if (ball.getX() + ball.getWidth() + xMove > stage.getViewport().getScreenWidth()) {
+                        if (ball1.getX() + ball1.getWidth() + xMove > stage.getViewport().getScreenWidth()) {
                             xMove = -xMove;
                         }
-                        if (ball.getY() + yMove < 0) {
-                            ball.clearActions();
+                        if (ball1.getY() + yMove < 0) {
+                            ball1.clearActions();
                         }
-                        if (ball.getY() + ball.getHeight() + yMove > stage.getViewport().getScreenHeight()) {
+                        if (ball1.getY() + ball1.getHeight() + yMove > stage.getViewport().getScreenHeight()) {
                             yMove = -yMove;
                         }
-                        ball.moveBy(xMove, yMove);
+                        ball1.moveBy(xMove, yMove);
                         return false;
                     }
                 });
@@ -123,11 +123,11 @@ public class NinjaBounce extends GameScreen {
             bar.setPosition(touchPoint.x - bar.getWidth()/ 2, bar.getY());
         }
 
-        if (ActorUtils.actorsCollided(bar,ball)){
+        if (ActorUtils.actorsCollided(bar,ball1)){
             yMove = Math.abs(yMove);
         }
         for(int i = 0; i < bricks.length; i++){
-            if (ActorUtils.actorsCollided(bricks[i], ball)){
+            if (ActorUtils.actorsCollided(bricks[i], ball1)){
                 popSound.play();
                 bricks[i].remove();
                 yMove = -Math.abs(yMove);
