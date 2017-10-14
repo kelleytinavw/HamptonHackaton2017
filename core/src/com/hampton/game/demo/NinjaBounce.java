@@ -34,39 +34,39 @@ public class NinjaBounce extends GameScreen {
     @Override
     public void createActors() {
         backgroundColor = new Color(1, 1, 1, 1);
-        ninja = ActorUtils.createActorFromImage("ninja-2swords.png");
-        ninja.setSize(ninja.getWidth()/3, ninja.getHeight()/3);
-        ninja.setPosition(
-                stage.getViewport().getScreenWidth()/2 - ninja.getWidth()/2,
-                stage.getViewport().getScreenHeight()/2 - ninja.getHeight()/2);
-        stage.addActor(ninja);
+        ball = ActorUtils.createActorFromImage("ball.png");
+        ball.setSize(ball.getWidth()/3, ball.getHeight()/3);
+        ball.setPosition(
+                stage.getViewport().getScreenWidth()/2 - ball.getWidth()/2,
+                stage.getViewport().getScreenHeight()/2 - ball.getHeight()/2);
+        stage.addActor(ball);
     }
 
     @Override
     public void setInputForActors() {
-        ninja.addListener(new ActorGestureListener() {
+        ball.addListener(new ActorGestureListener() {
             @Override
             public void touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 // Stop any other actions
-                ninja.clearActions();
+                ball.clearActions();
                 xMove = MathUtils.random(MAX_MOVE) - MAX_MOVE/2;
                 yMove = MathUtils.random(MAX_MOVE) - MAX_MOVE/2;
-                ninja.addAction(new Action() {
+                ball.addAction(new Action() {
                     @Override
                     public boolean act(float delta) {
-                        if (ninja.getX() + xMove < 0) {
+                        if (ball.getX() + xMove < 0) {
                             xMove = -xMove;
                         }
-                        if (ninja.getX() + ninja.getWidth() + xMove > stage.getViewport().getScreenWidth()) {
+                        if (ball.getX() + ball.getWidth() + xMove > stage.getViewport().getScreenWidth()) {
                             xMove = -xMove;
                         }
-                        if (ninja.getY() + yMove < 0) {
+                        if (ball.getY() + yMove < 0) {
                             yMove = -yMove;
                         }
-                        if (ninja.getY() + ninja.getHeight() + yMove > stage.getViewport().getScreenHeight()) {
+                        if (ball.getY() + ball.getHeight() + yMove > stage.getViewport().getScreenHeight()) {
                             yMove = -yMove;
                         }
-                        ninja.moveBy(xMove, yMove);
+                        ball.moveBy(xMove, yMove);
                         return false;
                     }
                 });
@@ -87,11 +87,11 @@ public class NinjaBounce extends GameScreen {
                     stage.getViewport().getScreenHeight() - Gdx.input.getY());
             // Only move to the point if we didn't click on the ninja
             if(!ActorUtils.actorContainsPoint(ninja, touchPoint)) {
-                ninja.clearActions();
+                ball.clearActions();
                 // Move to touched location in 3 seconds
-                ninja.addAction(Actions.moveTo(
-                        touchPoint.x - ninja.getWidth() / 2,
-                        touchPoint.y - ninja.getHeight() / 2,
+                ball.addAction(Actions.moveTo(
+                        touchPoint.x - ball.getWidth() / 2,
+                        touchPoint.y - ball.getHeight() / 2,
                         3,
                         Interpolation.circleOut));
             }
