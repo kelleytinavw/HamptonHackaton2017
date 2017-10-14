@@ -38,11 +38,14 @@ public class NinjaBounce extends GameScreen {
 
     @Override
     public void createActors() {
+        backgroundColor = new Color(1, 1, 1, 1);
+
         cat = ActorUtils.createActorFromImage("cat.png");
+        cat.setSize(cat.getWidth()*2, cat.getHeight()*2);
         cat.setPosition(stage.getViewport().getScreenHeight() * 2, cat.getWidth() * 2);
+        stage.addActor(cat);
         cat.toBack();
 
-        backgroundColor = new Color(1, 1, 1, 1);
         ball = ActorUtils.createActorFromImage("ball.png");
         ball.setSize(ball.getWidth()/3, ball.getHeight()/3);
         ball.setPosition(
