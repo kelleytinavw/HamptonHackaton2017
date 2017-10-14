@@ -1,6 +1,7 @@
 package com.hampton.game.demo;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
@@ -24,6 +25,7 @@ public class NinjaBounce extends GameScreen {
     private Actor ball;
     private Actor [] bricks = new Actor[20];
     private Actor bar;
+    private Sound popSound;
 
     
 
@@ -57,6 +59,10 @@ public class NinjaBounce extends GameScreen {
                 stage.getViewport().getScreenWidth()/2 - bar.getWidth()/2,
                 20);
         stage.addActor(bar);
+
+        popSound = Gdx.audio.newSound(Gdx.files.internal("pop.wav"));
+
+
     }
 
 
@@ -113,6 +119,7 @@ public class NinjaBounce extends GameScreen {
         }
         for(int i = 0; i < bricks.length; i++){
             if (ActorUtils.actorsCollided(bricks[i], ball)){
+                popSound.play();
                 bricks[i].remove();
                 yMove = -Math.abs(yMove);
             }
