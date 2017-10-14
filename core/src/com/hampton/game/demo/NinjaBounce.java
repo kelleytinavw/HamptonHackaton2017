@@ -114,6 +114,7 @@ public class NinjaBounce extends GameScreen {
         for(int i = 0; i < bricks.length; i++){
             if (ActorUtils.actorsCollided(bricks[i], ball)){
                 bricks[i].remove();
+                yMove = -Math.abs(yMove);
             }
         }
     }
