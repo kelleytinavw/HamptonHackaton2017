@@ -23,6 +23,7 @@ public class NinjaBounce extends GameScreen {
     private float yMove;
     private final float MAX_MOVE = 10;
 
+
     @Override
     public void initialize() {
 
