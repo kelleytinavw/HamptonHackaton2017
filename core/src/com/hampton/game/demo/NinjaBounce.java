@@ -27,15 +27,11 @@ public class NinjaBounce extends GameScreen {
     private Actor [] bricks = new Actor[20];
     private Actor bar;
     private Sound popSound;
-<<<<<<< HEAD
     private Music dub;
     private Actor cat;
-
-
-=======
     private Sound dub;
     private Actor cat;
->>>>>>> 9282ec12069300861396d10235a855940d4de724
+
 
     @Override
     public void initialize() {
