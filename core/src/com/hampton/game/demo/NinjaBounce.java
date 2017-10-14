@@ -22,12 +22,12 @@ public class NinjaBounce extends GameScreen {
 
     private float xMove;
     private float yMove;
-    private final float MAX_MOVE = 10;
+    private final float MAX_MOVE = 20;
     private Actor ball1;
     private Actor [] bricks = new Actor[300];
     private Actor bar;
     private Sound popSound;
-    private Sound dub;
+    private Music dub;
     private Actor cat3;
 
 
@@ -46,15 +46,15 @@ public class NinjaBounce extends GameScreen {
         cat3.toBack();
 
         ball1 = ActorUtils.createActorFromImage("ball1.jpg");
-        ball1.setSize(ball1.getWidth()/3, ball1.getHeight()/3);
+        ball1.setSize(ball1.getWidth(), ball1.getHeight());
         ball1.setPosition(
                 stage.getViewport().getScreenWidth()/2 - ball1.getWidth()/2,
-                stage.getViewport().getScreenHeight()/2 - ball1.getHeight()/2);
+                stage.getViewport().getScreenHeight()/3 - ball1.getHeight()/2);
         stage.addActor(ball1);
 
         for(int i = 0; i < bricks.length; i++) {
             bricks[i] = ActorUtils.createActorFromImage("brick.png");
-            bricks[i].setSize(bricks[i].getWidth(), bricks[i].getHeight());
+            bricks[i].setSize(bricks[i].getWidth() * 3, bricks[i].getHeight() * 3);
             bricks[i].setPosition(
                     (bricks[i].getWidth() + 1) * (i % 30),
                     stage.getViewport().getScreenHeight() - bricks[i].getHeight()* (i / 30));
@@ -62,7 +62,7 @@ public class NinjaBounce extends GameScreen {
         }
 
         bar = ActorUtils.createActorFromImage("bar.png");
-        bar.setSize(bar.getWidth()/3, bar.getHeight()/3);
+        bar.setSize(bar.getWidth(), bar.getHeight());
         bar.setPosition(
                 stage.getViewport().getScreenWidth()/2 - bar.getWidth()/2,
                 60);
@@ -70,8 +70,9 @@ public class NinjaBounce extends GameScreen {
 
         popSound = Gdx.audio.newSound(Gdx.files.internal("pop.wav"));
 
-        dub = Gdx.audio.newSound(Gdx.files.internal("dub.mp3"));
-            dub.play();
+        dub = Gdx.audio.newMusic(Gdx.files.internal("dub.mp3"));
+        dub.setLooping(true);
+        dub.play();
     }
 
 
@@ -128,9 +129,10 @@ public class NinjaBounce extends GameScreen {
         }
         
         for(int i = 0; i < bricks.length; i++){
-            if (ActorUtils.actorsCollided(bricks[i], ball1)){
+            if (bricks[i] != null && ActorUtils.actorsCollided(bricks[i], ball1)){
                 popSound.play();
                 bricks[i].remove();
+                bricks [i]= null;
                 yMove = -Math.abs(yMove);
             }
         }
