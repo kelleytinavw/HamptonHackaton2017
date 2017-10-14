@@ -111,7 +111,8 @@ public class NinjaBounce extends GameScreen {
         }
 
         if (ActorUtils.actorsCollided(bar,ball)){
-            ball - yMove
+        yMove = -yMove;
+
         }
     }
 }
