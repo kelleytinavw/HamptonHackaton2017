@@ -23,7 +23,7 @@ public class NinjaBounce extends GameScreen {
     private float yMove;
     private final float MAX_MOVE = 10;
     private Actor ball;
-    private Actor [] bricks = new Actor[30];
+    private Actor [] bricks = new Actor[25];
     private Actor bar;
 
     //private float moveBar;
@@ -110,7 +110,12 @@ public class NinjaBounce extends GameScreen {
         }
 
         if (ActorUtils.actorsCollided(bar,ball)){
-        yMove = Math.abs(yMove);
+            yMove = Math.abs(yMove);
+        }
+        if (ActorUtils.actorsCollided(bricks[], ball)){
+            for(int i = 0; i < bricks.length; i++) {
+                bricks[i].remove();
+            }
         }
     }
 }
