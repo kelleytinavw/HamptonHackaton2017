@@ -126,6 +126,7 @@ public class NinjaBounce extends GameScreen {
         if (ActorUtils.actorsCollided(bar,ball1)){
             yMove = Math.abs(yMove);
         }
+        
         for(int i = 0; i < bricks.length; i++){
             if (ActorUtils.actorsCollided(bricks[i], ball1)){
                 popSound.play();
