@@ -27,7 +27,6 @@ public class NinjaBounce extends GameScreen {
     private Actor [] bricks = new Actor[20];
     private Actor bar;
     private Sound popSound;
-    private Actor cat;
     private Sound dub;
     private Actor cat;
 
