@@ -1,6 +1,7 @@
 package com.hampton.game.demo;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Interpolation;
@@ -26,12 +27,9 @@ public class NinjaBounce extends GameScreen {
     private Actor [] bricks = new Actor[20];
     private Actor bar;
     private Sound popSound;
-<<<<<<< HEAD
-    private Sound dub;
-
-=======
+    private Music dub;
     private Actor cat;
->>>>>>> ee4204ae0c29a32dc7832f3893e279d12c553c31
+
 
 
     @Override
@@ -71,8 +69,8 @@ public class NinjaBounce extends GameScreen {
 
         popSound = Gdx.audio.newSound(Gdx.files.internal("pop.wav"));
 
-        dub = Gdx.audio.newSound(Gdx.files.internal("dub.mp3"));
-        dub.play();
+        dub = Gdx.audio.newMusic(Gdx.files.internal("dub.mp3"));
+            dub.play();
     }
 
 
