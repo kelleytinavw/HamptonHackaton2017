@@ -98,19 +98,14 @@ public class NinjaBounce extends GameScreen {
             Vector2 touchPoint = new Vector2(
                     Gdx.input.getX(),
                     stage.getViewport().getScreenHeight() - Gdx.input.getY());
-            // Only move to the point if we didn't click on the ninja
-            if(!ActorUtils.actorContainsPoint(ball, touchPoint)) {
-                ball.clearActions();
-                // Move to touched location in 3 seconds
-                ball.addAction(Actions.moveTo(
-                        touchPoint.x - ball.getWidth() / 2,
-                        touchPoint.y - ball.getHeight() / 2,
-                        3,
-                        Interpolation.circleOut));
+            // free-range moving bar
+            bar.setPosition(touchPoint.x - bar.getWidth()/ 2, bar.getY());
 
 
 
-            }
+
+
+
         }
     }
 }
