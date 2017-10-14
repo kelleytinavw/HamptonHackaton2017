@@ -28,7 +28,7 @@ public class NinjaBounce extends GameScreen {
     private Actor bar;
     private Sound popSound;
     private Sound dub;
-    private Actor cat;
+    private Actor cat3;
 
 
     @Override
@@ -40,10 +40,10 @@ public class NinjaBounce extends GameScreen {
     public void createActors() {
         backgroundColor = new Color(1, 1, 1, 1);
 
-        cat = ActorUtils.createActorFromImage("cat.png");
-        cat.setSize(stage.getViewport().getScreenWidth(),stage.getViewport().getScreenHeight());
-        stage.addActor(cat);
-        cat.toBack();
+        cat3 = ActorUtils.createActorFromImage("cat3.jpg");
+        cat3.setSize(stage.getViewport().getScreenWidth(),stage.getViewport().getScreenHeight());
+        stage.addActor(cat3);
+        cat3.toBack();
 
         ball = ActorUtils.createActorFromImage("ball.png");
         ball.setSize(ball.getWidth()/3, ball.getHeight()/3);
