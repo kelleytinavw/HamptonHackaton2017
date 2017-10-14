@@ -43,6 +43,13 @@ public class NinjaBounce extends GameScreen {
                 stage.getViewport().getScreenHeight()/2 - ball.getHeight()/2);
         stage.addActor(ball);
 
+        bricks = ActorUtils.createActorFromImage("bar.png");
+        bricks.setSize(bar.getWidth()/3, bar.getHeight()/3);
+        bricks.setPosition(
+                stage.getViewport().getScreenWidth()/2 - bar.getWidth()/2,
+                20);
+        stage.addActor(bar);
+
 
         bar = ActorUtils.createActorFromImage("bar.png");
         bar.setSize(bar.getWidth()/3, bar.getHeight()/3);
