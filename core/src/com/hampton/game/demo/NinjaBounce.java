@@ -25,6 +25,7 @@ public class NinjaBounce extends GameScreen {
     private Actor ball;
     private Actor [] bricks = new Actor[10];
     private Actor bar;
+
     //private float moveBar;
 
     @Override
