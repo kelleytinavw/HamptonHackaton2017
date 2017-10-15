@@ -4,13 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.hampton.game.GameScreen;
 import com.hampton.game.utils.ActorUtils;
@@ -22,7 +20,8 @@ public class NinjaBounce extends GameScreen {
 
     private float xMove;
     private float yMove;
-    private final float MAX_MOVE = 20;
+    private float maxMove = 20;
+    private int scoreB = 0;
     private Actor ball1;
     private Actor [] bricks = new Actor[300];
     private Actor bar;
@@ -84,8 +83,8 @@ public class NinjaBounce extends GameScreen {
             public void touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 // Stop any other actions
                 ball1.clearActions();
-                xMove = MathUtils.random(MAX_MOVE) - MAX_MOVE/2;
-                yMove = MathUtils.random(MAX_MOVE) - MAX_MOVE/2;
+                xMove = MathUtils.random(maxMove) - maxMove /2;
+                yMove = MathUtils.random(maxMove) - maxMove /2;
                 ball1.addAction(new Action() {
                     @Override
                     public boolean act(float delta) {
@@ -128,12 +127,16 @@ public class NinjaBounce extends GameScreen {
             yMove = Math.abs(yMove);
         }
         for(int i = 0; i < bricks.length; i++){
-            if (bricks[i] != null && ActorUtils.actorsCollided(bricks[i], ball1)){
+            if (bricks[i] != null && ActorUtils.actorsCollided(bricks[i], ball1)) {
                 popSound.play();
                 bricks[i].remove();
-                bricks [i]= null;
+                bricks[i] = null;
                 yMove = -Math.abs(yMove);
+                scoreB++;
             }
+                if (scoreB % 10 = 0){
+                    maxMove += 5;
+                }
         }
     }
 }
