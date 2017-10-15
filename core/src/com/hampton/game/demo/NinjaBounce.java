@@ -33,7 +33,7 @@ public class NinjaBounce extends GameScreen {
 
     @Override
     public void initialize() {
-
+    
     }
 
     @Override
