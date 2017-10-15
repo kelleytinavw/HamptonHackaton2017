@@ -134,10 +134,14 @@ public class NinjaBounce extends GameScreen {
                 bricks[i] = null;
                 yMove = -Math.abs(yMove);
                 scoreB++;
-            }
                 if (scoreB % 10 == 0){
-                    maxMove += 5;
+                    maxMove *= 1.1;
+                    yMove *= 1.1;
+                    xMove *= 1.1;
+
                 }
+
+            }
         }
     }
 }
