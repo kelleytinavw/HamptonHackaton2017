@@ -134,7 +134,7 @@ public class NinjaBounce extends GameScreen {
                 yMove = -Math.abs(yMove);
                 scoreB++;
             }
-                if (scoreB % 10 = 0){
+                if (scoreB % 10 == 0){
                     maxMove += 5;
                 }
         }
